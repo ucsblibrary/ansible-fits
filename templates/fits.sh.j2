@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+cd /usr/local/lib/fits-{{ fits_ver }}
+
+exec ./fits.sh "$@"

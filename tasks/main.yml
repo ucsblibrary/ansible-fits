@@ -1,34 +1,37 @@
 ---
-- name: install zip utility
+- name: install unzip
   become: yes
-  yum: name=unzip state=present
+  yum:
+    update_cache: yes
+    name: unzip
+    state: latest
 
-- name: download fits zip
-  get_url: url={{ fits_url }} sha256sum={{ fits_256 }} \
-           owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} \
-           dest={{ install_path }}/fits-{{ fits_ver }}.zip
+- name: download FITS
+  get_url:
+    url: "{{ fits_url }}"
+    checksum: sha256:{{ fits_256 }}
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    dest: "{{ install_path }}/fits-{{ fits_ver }}.zip"
 
-- name: unpack fits
-  unarchive: src={{ install_path }}/fits-{{ fits_ver }}.zip dest={{ install_path }}/ creates={{ install_path }}/fits-{{ fits_ver }}/fits.sh copy=no
-
-- name: make fits executable
+- name: unpack FITS
   become: yes
-  file: path={{ install_path }}/fits-{{ fits_ver }}/fits.sh mode=0755
+  unarchive:
+    src: "{{ install_path }}/fits-{{ fits_ver }}.zip"
+    dest: /usr/local/lib/
+    creates: /usr/local/lib/fits-{{ fits_ver }}/fits.sh
+    copy: no
 
-- name: add version to fits wrapper
-  become: yes
-  command: mv fits.sh fits-{{ fits_ver }}.sh \
-           chdir={{ install_path }}/fits-{{ fits_ver }}
-
-- name: copy fits
-  become: yes
-  shell: cp -r {{ install_path }}/fits-{{ fits_ver }}/* /usr/local/bin/ \
-         creates=/usr/local/bin/fits-{{ fits_ver }}.sh
-
-- name: symlink fits
+- name: make FITS executable
   become: yes
   file:
-    src: /usr/local/bin/fits-{{ fits_ver }}.sh
+    path: /usr/local/lib/fits-{{ fits_ver }}/fits.sh
+    mode: 0755
+
+- name: write FITS wrapper
+  become: yes
+  template:
+    src: fits.sh.j2
     dest: /usr/local/bin/{{ item }}
     state: link
     force: yes
