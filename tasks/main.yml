@@ -34,6 +34,7 @@
     src: fits.sh.j2
     dest: /usr/local/bin/{{ item }}
     force: yes
+    mode: 0755
   with_items:
     - fits
     - fits.sh
