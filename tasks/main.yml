@@ -33,7 +33,6 @@
   template:
     src: fits.sh.j2
     dest: /usr/local/bin/{{ item }}
-    state: link
     force: yes
   with_items:
     - fits
