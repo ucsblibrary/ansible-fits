@@ -6,6 +6,11 @@
     name: unzip
     state: latest
 
+- name: ensure {{ install_path }} exists
+  file:
+    path: "{{ install_path }}"
+    state: directory
+
 - name: download FITS
   get_url:
     url: "{{ fits_url }}"
