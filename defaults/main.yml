@@ -3,6 +3,5 @@ project_base: /opt
 install_path: "{{ project_base }}/install"
 
 fits_ver: 0.8.4
-# for 0.6.2: fits_url: https://fits.googlecode.com/files/fits-0.6.2.zip
 fits_url: http://projects.iq.harvard.edu/files/fits/files/fits-{{ fits_ver }}.zip
 fits_256: 6e623987385d596f80d4e4bbd0509107e8b550af52fa89c3aa99a37d14c4bf84
