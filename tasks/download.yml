@@ -1,0 +1,13 @@
+---
+- name: ensure {{ install_path }} exists
+  file:
+    path: "{{ install_path }}"
+    state: directory
+
+- name: download FITS
+  get_url:
+    url: "{{ fits_url }}"
+    checksum: sha256:{{ fits_256 }}
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    dest: "{{ install_path }}/fits-{{ fits_ver }}.zip"

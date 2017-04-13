@@ -1,0 +1,13 @@
+---
+- name: update all yum packages
+  yum:
+    name: "*"
+    state: latest
+    update_cache: yes
+
+- name: install unzip
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - unzip
+    - java-1.8.0-openjdk
