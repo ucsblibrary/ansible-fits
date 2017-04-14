@@ -1,6 +1,5 @@
 ---
 - name: unpack FITS
-  become: yes
   unarchive:
     src: "{{ install_path }}/fits-{{ fits_ver }}.zip"
     dest: /usr/local/lib/
@@ -8,13 +7,11 @@
     copy: no
 
 - name: make FITS executable
-  become: yes
   file:
     path: /usr/local/lib/fits-{{ fits_ver }}/fits.sh
     mode: 0755
 
 - name: write FITS wrapper
-  become: yes
   template:
     src: fits.sh.j2
     dest: /usr/local/bin/{{ item }}
