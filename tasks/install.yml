@@ -1,7 +1,7 @@
 ---
 - name: unpack FITS
   unarchive:
-    src: "{{ install_path }}/fits-{{ fits_ver }}.zip"
+    src: "{{ download_dir }}/fits-{{ fits_ver }}.zip"
     dest: /usr/local/lib/
     creates: /usr/local/lib/fits-{{ fits_ver }}/fits.sh
     copy: no

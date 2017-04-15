@@ -1,7 +1,7 @@
 ---
-- name: ensure {{ install_path }} exists
+- name: ensure {{ download_dir }} exists
   file:
-    path: "{{ install_path }}"
+    path: "{{ download_dir }}"
     state: directory
 
 - name: download FITS
@@ -10,4 +10,4 @@
     checksum: sha256:{{ fits_256 }}
     owner: "{{ ansible_ssh_user }}"
     group: "{{ ansible_ssh_user }}"
-    dest: "{{ install_path }}/fits-{{ fits_ver }}.zip"
+    dest: "{{ download_dir }}/fits-{{ fits_ver }}.zip"

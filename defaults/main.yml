@@ -1,6 +1,5 @@
 ---
-project_base: /opt
-install_path: "{{ project_base }}/install"
+download_dir: "{{ project_base }}/install"
 
 fits_ver: 0.8.4
 fits_url: http://projects.iq.harvard.edu/files/fits/files/fits-{{ fits_ver }}.zip
