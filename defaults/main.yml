@@ -1,6 +1,6 @@
 ---
 download_dir: "/tmp/fits-{{ fits_ver }}-build"
 
-fits_ver: 0.8.6
+fits_ver: 0.8.6_1
 fits_url: https://projects.iq.harvard.edu/files/fits/files/fits-{{ fits_ver }}.zip
 fits_256: d45f67a2606aaa0fdcbbade576f70f1590916b043fec28dcfdef1a8242fd4040
