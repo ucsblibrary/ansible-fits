@@ -1,15 +1,10 @@
 ---
 - name: unpack FITS
   unarchive:
-    src: "{{ download_dir }}/fits-{{ fits_ver }}.zip"
-    dest: /usr/local/lib/
     creates: /usr/local/lib/fits-{{ fits_ver }}/fits.sh
-    copy: no
-
-- name: make FITS executable
-  file:
-    path: /usr/local/lib/fits-{{ fits_ver }}/fits.sh
-    mode: 0755
+    dest: /usr/local/lib/
+    remote_src: yes
+    src: "{{ download_dir }}/fits-{{ fits_ver }}.zip"
 
 - name: write FITS wrapper
   template:
