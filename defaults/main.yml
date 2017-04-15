@@ -1,5 +1,5 @@
 ---
-download_dir: "{{ project_base }}/install"
+download_dir: "/tmp/fits-{{ fits_ver }}-build"
 
 fits_ver: 0.8.4
 fits_url: http://projects.iq.harvard.edu/files/fits/files/fits-{{ fits_ver }}.zip
