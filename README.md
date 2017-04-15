@@ -21,9 +21,9 @@ Example Playbook
 ```yaml
 - hosts: all
   roles:
-    - role: ucsblibrary.fits,
-      become: yes,
-      fits_ver: 0.8.4,
+    - role: ucsblibrary.fits
+      become: yes
+      fits_ver: 0.8.4
       fits_256: 6e623987385d596f80d4e4bbd0509107e8b550af52fa89c3aa99a37d14c4bf84
 ```
 
